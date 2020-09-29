@@ -1,0 +1,311 @@
+﻿<Window  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Train"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:chrome="clr-namespace:CefSharp.Wpf.Experimental;assembly=CefSharp.Wpf"
+    x:Class="Train.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Icon="logo.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="btn_main" TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="15,10"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextBlock.Padding" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Margin" Value="9,6"/>
+                    <Setter Property="FontSize" Value="32"/>
+                    <Setter Property="TextBlock.Padding" Value="10"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Margin" Value="18,12"/>
+                    <Setter Property="FontSize" Value="28px"/>
+                    <Setter Property="TextBlock.Padding" Value="10"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="btn_style_close"  TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="182-1829933_red-cross-red-cross-icon-png.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Width" Value="32"/>
+                    <Setter Property="Height" Value="32"/>
+                    <Setter Property="TextBlock.Padding" Value="10"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Width" Value="28"/>
+                    <Setter Property="Height" Value="28"/>
+                    <Setter Property="TextBlock.Padding" Value="10"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="btn_style_keyboard"  TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#FF583B09"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Margin" Value="3"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Margin" Value="7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Background_.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" Source="PicsArt_01-07-12.24.49.png" Width="45" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" TouchDown="Image_TouchDown" Opacity="0.8" Height="50" />
+        <UniformGrid Grid.Row="3" Grid.RowSpan="2" Rows="2" Margin="35,0,35,30" >
+            <Button x:Name="btn_main1" Style="{StaticResource btn_main}"  Click="Button_Click" Grid.Column="0" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" ><Run Text="О СТАНЦИИ"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main2" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ПОДЪЕЗДНЫЕ ПУТИ"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main3" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09"  FontWeight="Bold" >
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="РАСЧЕТ ТАРИФА"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main4" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="3" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="НЕОБХОДИМЫЕ ДОКУМЕНТЫ ДЛЯ ОТПРАВЛЕНИЯ ГРУЗА"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main5" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="0" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="СХЕМА ЖЕЛЕЗНЫХ ДОРОГ УЗБЕКИСТАНА"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main6" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ТИПЫ ГРУЗОВЫХ ВАГОНОВ"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main7" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ТРАНСПОРТНО ЭКСПЕДИТОРСКИЕ ОРГАНИЗАЦИИ"/></TextBlock>
+            </Button>
+            <Button x:Name="btn_main8" Style="{StaticResource btn_main}"   Click="Button_Click"  Grid.Column="3" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ЛЬГОТЫ ГРУЗООТПРАВИТЕЛЯМ"/></TextBlock>
+            </Button>
+        </UniformGrid>
+        <DockPanel x:Name="frame"  Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" 
+                               MaxWidth="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
+                               MaxHeight="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenHeightKey}}">
+            <Grid x:Name="grid" Width="{Binding Width, ElementName=frame}" Height="{Binding Height, ElementName=frame}" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="makoto-shinkai-ties-the-landscape-into-the-distance.jpg"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition x:Name="grid_row2"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btn_exit_frame1" Click="btn_exit_frame1_Click" Style="{StaticResource btn_style_close}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <chrome:ChromiumWebBrowserWithTouchSupport IsManipulationEnabled="True"  ScrollViewer.CanContentScroll="True" Margin="10,0,10,10" x:Name="web_browser" Grid.Row="1" Grid.Column="0" 
+                            Width="{Binding Width, ElementName=grid}" 
+                            Height="{Binding Height, ElementName=grid_row2}" />
+            </Grid>
+        </DockPanel>
+        <DockPanel x:Name="frame_raschot" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" MaxWidth="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
+                               MaxHeight="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenHeightKey}}">
+           
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="makoto-shinkai-ties-the-landscape-into-the-distance.jpg" />
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="1.3*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <UniformGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                    <Button x:Name="btn_exit_frame2" Click="btn_exit_frame1_Click" Style="{StaticResource btn_style_close}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </UniformGrid>
+                <Grid  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" >
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FFFDF3DA" Opacity="0.8"/>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="0" x:Name="row_keyboard"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="РАСЧЕТ ТАРИФА" FontSize="38px" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center"  TextWrapping="Wrap" Text="Станция отправления" FontSize="36"/>
+                    <ComboBox Margin="0,0,20,0"  x:Name="cmb_send_staions" FontSize="36" Height="50" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock  Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Center"  TextWrapping="Wrap" Text="Станция назначения" FontSize="36"/>
+                    <ComboBox  Margin="0,0,20,0" x:Name="cmb_get_staions" FontSize="36" Height="50" Grid.Column="1" Grid.Row="2"/>
+                    <TextBlock  Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center"  TextWrapping="Wrap" Text="Тип вагона" FontSize="36"/>
+                    <ComboBox Margin="0,0,20,0" x:Name="cmb_type_cargo" FontSize="36" Height="50" Grid.Column="1" Grid.Row="3"/>
+                    <TextBlock  Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" TextAlignment="Center"  TextWrapping="Wrap" Text="Масса груза (тонна)" FontSize="36"/>
+                    <Grid Margin="0,0,20,0"  Grid.Row="4" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="0.25*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox  x:Name="txt_weight" Height="50" Grid.Column="0" Grid.Row="0" FontSize="36" />
+                        <Button x:Name="btn_keyboard" Click="btn_keyboard_Click" Style="{StaticResource btn_style_keyboard}" Height="50" Grid.Column="1" Grid.Row="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="KeyBoard-512.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                    <UniformGrid Margin="0,0,20,0"  Grid.Row="5" Grid.Column="2"  Columns="3" Rows="4">
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_1" Click="key_Click" Content="1" FontSize="24" Grid.Column="0" Grid.Row="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_2" Click="key_Click" Content="2" FontSize="24" Grid.Column="1" Grid.Row="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_3" Click="key_Click" Content="3" FontSize="24" Grid.Column="2" Grid.Row="0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_4" Click="key_Click" Content="4" FontSize="24" Grid.Column="0" Grid.Row="1">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_5" Click="key_Click" Content="5" FontSize="24" Grid.Column="1" Grid.Row="1">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_6" Click="key_Click" Content="6" FontSize="24" Grid.Column="2" Grid.Row="1">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_7" Click="key_Click" Content="7" FontSize="24" Grid.Column="0" Grid.Row="2">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_8" Click="key_Click" Content="8" FontSize="24" Grid.Column="1" Grid.Row="2">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_9" Click="key_Click" Content="9" FontSize="24" Grid.Column="2" Grid.Row="2">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_0" Click="key_Click" Content="0" FontSize="24" Grid.Column="0" Grid.Row="3">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_clear" Click="key_Click" Content="C" FontSize="24" Grid.Column="1" Grid.Row="3">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_delete" Click="key_Click" Content="&lt;-" FontSize="24" Grid.Column="2" Grid.Row="3">
+                            <Button.Background>
+                                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                            </Button.Background>
+                        </Button>
+                    </UniformGrid>
+                    <Button Opacity="0.9" Style="{StaticResource btn_style_keyboard}" x:Name="btn_colculation" VerticalAlignment="Center" Content="Расчитать" VerticalContentAlignment="Center" Click="btn_colculation_Click" Height="60" Width="200" FontSize="34" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2">
+                        <Button.Background>
+                            <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock x:Name="txtblock_last_price" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Итоговая стоимость: 0 сум" FontSize="42" FontWeight="Bold"/>
+                </Grid>
+                <UniformGrid Margin="20,10" Columns="1" Rows="7" Grid.Column="3" Grid.Row="1" >
+                    <UniformGrid.Background>
+                        <SolidColorBrush Color="#FFFDF3DA" Opacity="0.8"/>
+                    </UniformGrid.Background>
+                    <TextBlock FontWeight="Bold" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="КУРСЫ ВАЛЮТ" FontSize="38"/>
+                    <TextBlock Padding="20,0" x:Name="txt_dollar" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"  TextWrapping="Wrap"  FontSize="34"/>
+                    <TextBlock Padding="20,0" x:Name="txt_yevro" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"  TextWrapping="Wrap" FontSize="34"/>
+                    <TextBlock Padding="20,0" x:Name="txt_rubl" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"  TextWrapping="Wrap" FontSize="34"/>
+                </UniformGrid>
+                <Grid Margin="20,10" Grid.Column="0" Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FFFDF3DA" Opacity="0.8"/>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontWeight="Bold" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="АО «УТЙ»" FontSize="38"/>
+                    <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Source="logo1.png"/>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
