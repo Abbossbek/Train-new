@@ -61,7 +61,7 @@ namespace Train.Model
         }
 
 
-        internal double Calculate(string selected_station, string selected_type_cargo, string owner, int weight)
+        internal double Calculate(string selected_station, string selected_type_cargo, bool inventory, int weight)
         {
             int way_length = 0;
             double coefficient = 1;
@@ -94,6 +94,36 @@ namespace Train.Model
                 }
             }
 
+            switch (selected_type_cargo)
+            {
+                case "Крытый вагон":
+                case "Полувагон":
+                case "Платформа":
+                    
+                    break;
+                case "Зерновоз":
+                    break;
+                case "Хоппер-цементовоз":
+                    break;
+                case "Цистерна-цементовоз":
+                case "Хоппер-дозатор":
+                case "Минераловоз":
+                case "Думпкары":
+                case "Бункерные полувагоны для битума":
+                    break;
+                case "Вагон-термос":
+                    break;
+                case "Цистерна (Нефтепродукты)":
+                    break;
+                case "Цистерна (Газы сжиженные)":
+                    break;
+                case "Цистерна (Спирты и фенолы)":
+                    break;
+                case "Цистерна (Скоропортящиеся грузы)":
+                    break;
+                case "Цистерна (Остальные наливные грузы)":
+                    break;
+            }
             int index_i = find_i(weight);
             int index_j = find_j(way_length);
 

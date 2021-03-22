@@ -182,9 +182,9 @@ namespace Train
 
                 string selected_station = cmb_get_staions.SelectedItem.ToString().Remove(cmb_get_staions.SelectedItem.ToString().IndexOf('.'));
                 string selected_type_cargo = cmb_type_cargo.SelectedItem.ToString();
-                string owner = cmb_owner.SelectedItem.ToString();
+                bool inventory = cmb_owner.SelectedIndex == 0;
 
-                double last_price = worker.Calculate(selected_station, selected_type_cargo, owner, weight);
+                double last_price = worker.Calculate(selected_station, selected_type_cargo, inventory, weight);
 
                 txtblock_last_price.Text = "Итоговая стоимость:  " + String.Format("{0:#,###}",Math.Round(last_price)) + " сум";
             }
