@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>        
+        .container {
+            position: relative;
+        }
+
+
+        button {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            bottom: 50px;
+        }
+        .plus {
+            background-image: url(./sxema/plus.png);
+            background-size: 100% 100%;
+            border-radius:50px;
+            right: 50px;
+            font-size: 18px;
+        }
+
+        .minus {
+            background-image: url(./sxema/minusu.png);
+            background-size: 100% 100%;
+            border-radius: 50px;
+            right: 150px;
+            font-size: 18px;
+        }
+
+    </style>
+    <script>
+        var count = 0;
+        function resize(direction) {
+            var deltaY = 100 * direction;
+            var deltaX = 170 * direction;
+
+            var element = document.getElementById('img');
+            var positionInfo = element.getBoundingClientRect();
+
+            element.style.width = positionInfo.width+deltaX+'px';
+            element.style.height = positionInfo.height + deltaY + 'px';
+
+            var btnPlus = document.getElementById('btnPlus');
+            var btnMinus = document.getElementById('btnMinus');
+
+            if (direction < 0) {
+                count = count - 1;
+            }
+            else {
+                count = count + 1;
+            }
+
+            if (count == 0) {
+                btnMinus.setAttribute('disabled', 'disabled');
+                btnMinus.style.backgroundImage = "url(./Sxema/minusu.png)";
+            }
+            else {
+                btnMinus.disabled = false;
+                btnMinus.style.backgroundImage = "url(./Sxema/minus.png)";
+            }
+            if (count == 10) {
+                btnPlus.setAttribute('disabled', 'disabled');
+                btnPlus.style.backgroundImage = "url(./Sxema/plusu.png)";
+            }
+            else {
+                btnPlus.disabled = false;
+                btnPlus.style.backgroundImage = "url(./Sxema/plus.png)";
+            }
+        }
+    </script>
+</head>
+<body onselectstart="return false" ondragstart="return false" oncontextmenu="return false">
+    <img class="container" src="./Sxema/Skhema.jpg" id="img" />
+    <button class="plus" id="btnPlus" onClick="resize(1)"></button>
+    <button class="minus" disabled id="btnMinus" onClick="resize(-1)"></button>
+</body>
+</html>
