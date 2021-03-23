@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Train"
         mc:Ignorable="d"
-        Title="Выход" Height="483.823" Width="483.439" IsTabStop="True" WindowStartupLocation="CenterScreen" Icon="logo.png" ResizeMode="NoResize">
+        Title="Выход" Height="483.823" Width="483.439" IsTabStop="True" WindowStartupLocation="CenterScreen" Icon="Resources/logo.png" ResizeMode="NoResize">
     <Window.Resources>
 
         <Style x:Key="btn_style_keyboard"  TargetType="{x:Type Button}">
@@ -43,69 +43,69 @@
         <UniformGrid Grid.Row="2" Grid.Column="0"  Columns="3" Rows="4">
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_1" Click="key_Click" Content="1" FontSize="24" Grid.Column="0" Grid.Row="0">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_2" Click="key_Click" Content="2" FontSize="24" Grid.Column="1" Grid.Row="0">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_3" Click="key_Click" Content="3" FontSize="24" Grid.Column="2" Grid.Row="0">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_4" Click="key_Click" Content="4" FontSize="24" Grid.Column="0" Grid.Row="1">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_5" Click="key_Click" Content="5" FontSize="24" Grid.Column="1" Grid.Row="1">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_6" Click="key_Click" Content="6" FontSize="24" Grid.Column="2" Grid.Row="1">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_7" Click="key_Click" Content="7" FontSize="24" Grid.Column="0" Grid.Row="2">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_8" Click="key_Click" Content="8" FontSize="24" Grid.Column="1" Grid.Row="2">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_9" Click="key_Click" Content="9" FontSize="24" Grid.Column="2" Grid.Row="2">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
-                </Button.Background>
-            </Button>
-            <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_0" Click="key_Click" Content="0" FontSize="24" Grid.Column="0" Grid.Row="3">
-                <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_clear" Click="key_Click" Content="C" FontSize="24" Grid.Column="1" Grid.Row="3">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
+                </Button.Background>
+            </Button>
+            <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_0" Click="key_Click" Content="0" FontSize="24" Grid.Column="0" Grid.Row="3">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource btn_style_keyboard}" x:Name="key_delete" Click="key_Click" Content="&lt;-" FontSize="24" Grid.Column="2" Grid.Row="3">
                 <Button.Background>
-                    <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                    <ImageBrush ImageSource="Resources/button.png"/>
                 </Button.Background>
             </Button>
         </UniformGrid>
 
         <Button Style="{StaticResource btn_style_keyboard}"  Grid.Row="3" Grid.Column="0" Content="Выход" Height="50" FontSize="24" Width="150" Click="Button_Click">
             <Button.Background>
-                <ImageBrush ImageSource="2019-12-15_114650.png"/>
+                <ImageBrush ImageSource="Resources/button.png"/>
             </Button.Background>
         </Button>
     </Grid>
