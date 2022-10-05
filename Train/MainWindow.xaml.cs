@@ -49,7 +49,7 @@ namespace Train
 
             cmb_export.Items.Add("Внутригосударственный");
             cmb_export.Items.Add("На экспорт");
-            cmb_send_staions.Items.Add("Чукурсай");
+            cmb_send_staions.Items.Add("Назарбек");
             cmb_export.SelectedIndex = 0;
             cmb_send_staions.SelectedIndex = 0;
 
