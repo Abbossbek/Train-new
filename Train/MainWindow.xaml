@@ -7,7 +7,7 @@
     xmlns:chrome="clr-namespace:CefSharp.Wpf.Experimental;assembly=CefSharp.Wpf"
     x:Class="Train.MainWindow"
         mc:Ignorable="d" Width="1500" Height="1100"
-        Title="MainWindow" Icon="Resources/logo.png"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStyle="None">
+        Title="Train" Icon="Resources/logo.png"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="btn_main" TargetType="{x:Type Button}">
             <Setter Property="Background">
