@@ -53,10 +53,10 @@ namespace Train
             cmb_export.SelectedIndex = 0;
             cmb_send_staions.SelectedIndex = 0;
 
-            password = worker.mainTable.Rows[4].ItemArray[5].ToString();
-            dollar = worker.mainTable.Rows[5].ItemArray[5].ToString();
-            yevro = worker.mainTable.Rows[6].ItemArray[5].ToString();
-            rubl = worker.mainTable.Rows[7].ItemArray[5].ToString();
+            password = worker.mainTable.Rows[5].ItemArray[5].ToString();
+            dollar = worker.mainTable.Rows[6].ItemArray[5].ToString();
+            yevro = worker.mainTable.Rows[7].ItemArray[5].ToString();
+            rubl = worker.mainTable.Rows[8].ItemArray[5].ToString();
 
             txt_dollar.Text = "1 USD = " + dollar + " UZS";
             txt_yevro.Text = "1 EUR = " + yevro + " UZS";

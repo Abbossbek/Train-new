@@ -21,7 +21,7 @@ namespace Train.Model
         DataSet mainDataSet;
         DataTable[] prices = new DataTable[28];
         public List<string> carriageTypes;
-        string nds = null,  coefficient1 = null, coefficient2 = null, coefficient3 = null;
+        string nds = null, coefficient1 = null, coefficient2 = null, coefficient3 = null, coefficient4 = null;
         public TrainWorker()
         {
             using (var stream = File.Open(Environment.CurrentDirectory + "\\Files\\Список станций.xlsx", FileMode.Open, FileAccess.Read))
@@ -61,6 +61,7 @@ namespace Train.Model
             coefficient1 = mainTable.Rows[1].ItemArray[5].ToString();
             coefficient2 = mainTable.Rows[2].ItemArray[5].ToString();
             coefficient3 = mainTable.Rows[3].ItemArray[5].ToString();
+            coefficient4 = mainTable.Rows[4].ItemArray[5].ToString();
         }
 
 
@@ -68,7 +69,7 @@ namespace Train.Model
         {
             int way_length = 0;
             double coefficient = 1;
-            int indexX = 0, indexY=0;
+            int indexX = 0, indexY = 0;
 
             for (int i = 0; i < whiteStations.Rows.Count; i++)
             {
@@ -101,18 +102,7 @@ namespace Train.Model
             {
                 if (exportStations.Rows[i].ItemArray[0].ToString().Equals(selected_station))
                 {
-                    switch (exportStations.Rows[i].ItemArray[3].ToString())
-                    {
-                        case "1":
-                            coefficient = Convert.ToDouble(coefficient1);
-                            break;
-                        case "2":
-                            coefficient = Convert.ToDouble(coefficient2);
-                            break;
-                        default:
-                            coefficient = Convert.ToDouble(coefficient3);
-                            break;
-                    }
+                    coefficient = Convert.ToDouble(coefficient4);
                     way_length = Int32.Parse(exportStations.Rows[i].ItemArray[1].ToString());
                     break;
                 }
@@ -126,14 +116,14 @@ namespace Train.Model
                 case "Крытый вагон":
                 case "Полувагон":
                 case "Платформа":
-                    tableIndex = inventory?1:2;
+                    tableIndex = inventory ? 1 : 2;
                     indexX = FindX(way_length);
                     indexY = weight - 9;
                     sum = Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY].ItemArray[indexX].ToString().Replace(" ", ""));
                     break;
                 case "Зерновоз":
                     tableIndex = 3;
-                    indexX = FindX(way_length,2);
+                    indexX = FindX(way_length, 2);
                     if (weight < 70)
                     {
                         indexY = inventory ? 8 : 24;
@@ -142,13 +132,13 @@ namespace Train.Model
                     else
                     {
                         indexY = inventory ? 9 : 25;
-                        sum = Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY-1].ItemArray[indexX].ToString().Replace(" ", "")) +
+                        sum = Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY - 1].ItemArray[indexX].ToString().Replace(" ", "")) +
                             (weight - 70) * Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY].ItemArray[indexX].ToString().Replace(" ", ""));
                     }
                     break;
                 case "Хоппер-цементовоз":
                     tableIndex = 3;
-                    indexX = FindX(way_length,2);
+                    indexX = FindX(way_length, 2);
                     if (weight < 70)
                     {
                         indexY = inventory ? 8 : 19;
@@ -167,7 +157,7 @@ namespace Train.Model
                 case "Думпкар":
                 case "Бункерный полувагон для битума":
                     tableIndex = 3;
-                    indexX = FindX(way_length,2);
+                    indexX = FindX(way_length, 2);
                     if (weight < 70)
                     {
                         indexY = inventory ? 11 : 24;
@@ -182,12 +172,12 @@ namespace Train.Model
                     break;
                 case "Вагон-термос":
                     tableIndex = 3;
-                    indexX = FindX(way_length,2);
+                    indexX = FindX(way_length, 2);
                     indexY = 38;
-                    sum = weight < 70 
+                    sum = weight < 70
                         ? Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY].ItemArray[indexX].ToString().Replace(" ", ""))
                         : Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY].ItemArray[indexX].ToString().Replace(" ", "")) +
-                            (weight - 70) * Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY+1].ItemArray[indexX].ToString().Replace(" ", ""));
+                            (weight - 70) * Convert.ToInt64(mainDataSet.Tables[tableIndex].Rows[indexY + 1].ItemArray[indexX].ToString().Replace(" ", ""));
                     break;
                 case "Цистерна (Нефтепродукты)":
                     tableIndex = 6;
@@ -221,7 +211,7 @@ namespace Train.Model
                     break;
             }
 
-           return sum * coefficient * (Convert.ToDouble(nds) / 100 + 1);
+            return sum * coefficient * (Convert.ToDouble(nds) / 100 + 1);
         }
 
         private int FindX(int way_length, int type = 1)
