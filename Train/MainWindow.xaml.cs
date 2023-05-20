@@ -157,7 +157,7 @@ namespace Train
 
                 double last_price = worker.Calculate(selected_station, selected_type_cargo, inventory, weight);
 
-                txtblock_last_price.Text = "Стоимость тарифа:  " + String.Format("{0:#,###}", Math.Round(last_price)) + " сум";
+                txtblock_last_price.Text = "Стоимость тарифа:  " + String.Format("{0:#,###}", Math.Round(last_price)) + " сум"; 
             }
         }
 
