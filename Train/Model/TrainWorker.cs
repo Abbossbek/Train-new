@@ -70,6 +70,7 @@ namespace Train.Model
             int way_length = 0;
             double coefficient = 1;
             int indexX = 0, indexY = 0;
+            bool isExport = false;
 
             for (int i = 0; i < whiteStations.Rows.Count; i++)
             {
@@ -104,6 +105,7 @@ namespace Train.Model
                 {
                     coefficient = Convert.ToDouble(coefficient4);
                     way_length = Int32.Parse(exportStations.Rows[i].ItemArray[1].ToString());
+                    isExport = true;
                     break;
                 }
             }
@@ -211,7 +213,7 @@ namespace Train.Model
                     break;
             }
 
-            return sum * coefficient * (Convert.ToDouble(nds) / 100 + 1);
+            return sum * coefficient * (isExport ? 1 : (Convert.ToDouble(nds) / 100 + 1));
         }
 
         private int FindX(int way_length, int type = 1)
