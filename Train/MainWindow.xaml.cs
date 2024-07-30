@@ -106,6 +106,10 @@ namespace Train
                 if (sender.Equals(btn_main8))
                 {
                     web_browser.Load(Environment.CurrentDirectory + "\\Pages\\АО «Узбекистон темир йуллари» — Льготы грузоотправителям.html");
+                } 
+                if (sender.Equals(btn_main9))
+                {
+                    web_browser.Load("https://e-nakl.railway.uz");
                 }
                 frame.BeginStoryboard(storyboard);
             }

@@ -98,6 +98,12 @@
         <ImageBrush ImageSource="Resources/Background_.jpg"/>
     </Window.Background>
     <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />  
+			<ColumnDefinition />  
+			<ColumnDefinition />  
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -106,32 +112,42 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Source="Resources/lock.png" Width="45" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" TouchDown="Image_TouchDown" Opacity="0.8" Height="50" />
-        <UniformGrid Grid.Row="3" Grid.RowSpan="2" Rows="2" Margin="35,0,35,30" >
-            <Button x:Name="btn_main1" Style="{StaticResource btn_main}"  Click="Button_Click" Grid.Column="0" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+            <Button x:Name="btn_main1" Style="{StaticResource btn_main}"  Click="Button_Click" Grid.Column="0" Grid.Row="3" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" ><Run Text="О СТАНЦИИ"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main2" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+            <Button x:Name="btn_main2" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="3" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ПОДЪЕЗДНЫЕ ПУТИ"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main3" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09"  FontWeight="Bold" >
+            <Button x:Name="btn_main3" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="3" Opacity="0.9" Foreground="#FF583B09"  FontWeight="Bold" >
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="РАСЧЕТ ТАРИФА"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main4" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="3" Grid.Row="0" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+            <Button x:Name="btn_main4" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="3" Grid.Row="3" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="НЕОБХОДИМЫЕ ДОКУМЕНТЫ ДЛЯ ОТПРАВЛЕНИЯ ГРУЗА"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main5" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="0" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
+            <Button x:Name="btn_main5" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="0" Grid.Row="4" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="СХЕМА ЖЕЛЕЗНЫХ ДОРОГ УЗБЕКИСТАНА"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main6" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+            <Button x:Name="btn_main6" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="1" Grid.Row="4" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ТИПЫ ГРУЗОВЫХ ВАГОНОВ"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main7" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
+            <Button x:Name="btn_main7" Style="{StaticResource btn_main}"  Click="Button_Click"  Grid.Column="2" Grid.Row="4" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold" >
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ТРАНСПОРТНО ЭКСПЕДИТОРСКИЕ ОРГАНИЗАЦИИ"/></TextBlock>
             </Button>
-            <Button x:Name="btn_main8" Style="{StaticResource btn_main}"   Click="Button_Click"  Grid.Column="3" Grid.Row="1" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+            <Button x:Name="btn_main8" Style="{StaticResource btn_main}"   Click="Button_Click"  Grid.Column="3" Grid.Row="4" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
                 <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="ЛЬГОТЫ ГРУЗООТПРАВИТЕЛЯМ"/></TextBlock>
             </Button>
-        </UniformGrid>
+            <Button x:Name="btn_main9" Style="{StaticResource btn_main}"   Click="Button_Click"  Grid.Column="0" Grid.Row="2" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+			<TextBlock
+				TextWrapping="WrapWithOverflow"
+				TextAlignment="Center"><Run
+					Text="E-NAKL ЕДИНОЕ ОКНО"/></TextBlock>
+            </Button> 
+            <Button x:Name="btn_main10" Style="{StaticResource btn_main}"   Click="Button_Click"  Grid.Column="3" Grid.Row="2" Opacity="0.9" Foreground="#FF583B09" FontWeight="Bold">
+			<TextBlock
+				TextWrapping="WrapWithOverflow"
+				TextAlignment="Center"><Run
+					Text="ВИДEО ҚЎЛЛАНМА"/></TextBlock>
+            </Button>
         <Canvas Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" >
             <DockPanel x:Name="frame" Canvas.Top="1200" Margin="10"
                                Width="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
@@ -152,7 +168,7 @@
                 </Grid>
             </DockPanel>
 
-            <DockPanel x:Name="frame_raschot" Canvas.Top="0" Margin="10"  Width="{StaticResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
+            <DockPanel x:Name="frame_raschot" Canvas.Top="1200" Margin="10"  Width="{StaticResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
                                Height="{StaticResource {x:Static SystemParameters.FullPrimaryScreenHeightKey}}">
 
                 <Grid>
