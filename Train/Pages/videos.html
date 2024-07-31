@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+        #videoList {
+            width: 30%;
+            padding: 10px;
+            border-right: 1px solid #ccc;
+        }
+
+        #videoPlayer {
+            width: 70%;
+            padding: 10px;
+        }
+
+        .videoItem {
+            cursor: pointer;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body  oncontextmenu="return false" ondragstart="return false">
+    <div id="videoList"></div>
+    <div id="videoPlayer">
+        <video id="player" width="100%" controls autoplay loop></video>
+    </div>
+
+    <script>
+        const videoFolder = './videos';
+        const videoList = document.getElementById('videoList');
+        const player = document.getElementById('player');
+
+        // List of video files (you can dynamically generate this list from your server)
+        const videos = [];
+
+        videos.forEach(video => {
+            const videoItem = document.createElement('div');
+            videoItem.className = 'videoItem';
+            videoItem.textContent = video;
+            videoItem.onclick = () => {
+                player.src = `${videoFolder}/${video}`;
+                player.play();
+            };
+            videoList.appendChild(videoItem);
+        });
+
+        // Auto-play the first video in the list
+        if (videos.length > 0) {
+            player.src = `${videoFolder}/${videos[0]}`;
+            player.play();
+        }
+    </script>
+</body>
+</html>

@@ -111,6 +111,10 @@ namespace Train
                 {
                     web_browser.Load("https://e-nakl.railway.uz");
                 }
+                if (sender.Equals(btn_main10))
+                {
+                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\videos.html");
+                }
                 frame.BeginStoryboard(storyboard);
             }
             else
