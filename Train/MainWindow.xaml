@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Train"
+		xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:chrome="clr-namespace:CefSharp.Wpf.Experimental;assembly=CefSharp.Wpf"
     x:Class="Train.MainWindow"
@@ -162,7 +163,7 @@
                     </Grid.RowDefinitions>
                     <Button x:Name="btn_exit_frame1" Click="btn_exit_frame1_Click" Style="{StaticResource btn_style_close}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                    <chrome:ChromiumWebBrowserWithTouchSupport IsManipulationEnabled="True"  ScrollViewer.CanContentScroll="True" Margin="10,0,10,10" x:Name="web_browser" Grid.Row="1" Grid.Column="0" 
+                    <wv2:WebView2 IsManipulationEnabled="True"  ScrollViewer.CanContentScroll="True" Margin="10,0,10,10" x:Name="web_browser" Grid.Row="1" Grid.Column="0" 
                             Width="{Binding Width, ElementName=grid}" 
                             Height="{Binding Height, ElementName=grid_row2}" />
                 </Grid>

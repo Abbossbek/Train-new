@@ -26,22 +26,22 @@ namespace Train
         {
             InitializeComponent();
             setValues();
-            web_browser.Address = Environment.CurrentDirectory + "\\Pages\\о станции.html";
-            web_browser.FrameLoadEnd += MyBrowserOnFrameLoadEnd;
+            web_browser.Source = new Uri( Environment.CurrentDirectory + "\\Pages\\о станции.html", UriKind.RelativeOrAbsolute);
+            //web_browser.ZoomFactor ;
 
             frame.Width = frame.Width - 20;
             frame_raschot.Width = frame_raschot.Width - 20;
 
         }
 
-        private void MyBrowserOnFrameLoadEnd(object sender, FrameLoadEndEventArgs e)
-        {
-            ChromiumWebBrowser browser = (ChromiumWebBrowser)sender;
-            Dispatcher.Invoke(() =>
-            {
-                browser.SetZoomLevel((Convert.ToDouble(browser.Tag) - 30) / 25.0);
-            });
-        }
+        //private void MyBrowserOnFrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+        //{
+        //    ChromiumWebBrowser browser = (ChromiumWebBrowser)sender;
+        //    Dispatcher.Invoke(() =>
+        //    {
+        //        browser.SetZoomLevel((Convert.ToDouble(browser.Tag) - 30) / 25.0);
+        //    });
+        //}
 
         private void setValues()
         {
@@ -77,43 +77,43 @@ namespace Train
                 web_browser.Visibility = Visibility.Visible;
                 if (sender.Equals(btn_main1))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\о станции.html");
-                    Dispatcher.Invoke(() =>
-                    {
-                        web_browser.SetZoomLevel((Convert.ToDouble(web_browser.Tag) - 30) / 25.0);
-                    });
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\о станции.html");
+                    //Dispatcher.Invoke(() =>
+                    //{
+                    //    web_browser.SetZoomLevel((Convert.ToDouble(web_browser.Tag) - 30) / 25.0);
+                    //});
                 }
                 if (sender.Equals(btn_main2))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\П-пути.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\П-пути.html");
                 }
                 if (sender.Equals(btn_main4))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\Документы.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\Документы.html");
                 }
                 if (sender.Equals(btn_main5))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\sxema.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\sxema.html");
                 }
                 if (sender.Equals(btn_main6))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\Типы жд вагонов - Cargo Star LLC.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\Типы жд вагонов - Cargo Star LLC.html");
                 }
                 if (sender.Equals(btn_main7))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\Перечень транспортно-экспедиторских организаций.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\Перечень транспортно-экспедиторских организаций.html");
                 }
                 if (sender.Equals(btn_main8))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\АО «Узбекистон темир йуллари» — Льготы грузоотправителям.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\АО «Узбекистон темир йуллари» — Льготы грузоотправителям.html");
                 } 
                 if (sender.Equals(btn_main9))
                 {
-                    web_browser.Load("https://e-nakl.railway.uz");
+                    web_browser.CoreWebView2.Navigate("https://e-nakl.railway.uz");
                 }
                 if (sender.Equals(btn_main10))
                 {
-                    web_browser.Load(Environment.CurrentDirectory + "\\Pages\\videos.html");
+                    web_browser.CoreWebView2.Navigate(Environment.CurrentDirectory + "\\Pages\\videos.html");
                 }
                 frame.BeginStoryboard(storyboard);
             }
@@ -172,14 +172,14 @@ namespace Train
 
         private void web_browser_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
-            if (e.Delta > 0 && web_browser.ZoomLevel <= 1000)
-            {
-                web_browser.ZoomInCommand.Execute(null);
-            }
-            else if (e.Delta < 0 && web_browser.ZoomLevel >= 10)
-            {
-                web_browser.ZoomOutCommand.Execute(null);
-            }
+            //if (e.Delta > 0 && web_browser.ZoomLevel <= 1000)
+            //{
+            //    web_browser.ZoomInCommand.Execute(null);
+            //}
+            //else if (e.Delta < 0 && web_browser.ZoomLevel >= 10)
+            //{
+            //    web_browser.ZoomOutCommand.Execute(null);
+            //}
         }
 
         private void cmb_export_SelectionChanged(object sender, SelectionChangedEventArgs e)
