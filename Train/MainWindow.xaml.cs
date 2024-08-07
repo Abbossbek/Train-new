@@ -7,8 +7,6 @@ using System.IO;
 using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
-using CefSharp;
-using CefSharp.Wpf;
 using System.Windows.Controls;
 using Train.Model;
 
@@ -32,6 +30,20 @@ namespace Train
             frame.Width = frame.Width - 20;
             frame_raschot.Width = frame_raschot.Width - 20;
 
+        }
+        public override async void OnApplyTemplate()
+        {
+            web_browser.CoreWebView2InitializationCompleted += (sender, args) =>
+            {
+                if (args.IsSuccess && web_browser.CoreWebView2 != null)
+                {
+                    web_browser.CoreWebView2.DOMContentLoaded += (s, a) =>
+                    {
+                        web_browser.ExecuteScriptAsync("document.querySelector('body').style.overflow='scroll';var style=document.createElement('style');style.type='text/css';style.innerHTML='::-webkit-scrollbar{display:none}';document.getElementsByTagName('body')[0].appendChild(style)");
+                    };
+                }
+            };
+            await web_browser.EnsureCoreWebView2Async(null);
         }
 
         //private void MyBrowserOnFrameLoadEnd(object sender, FrameLoadEndEventArgs e)
@@ -283,10 +295,16 @@ namespace Train
             DoubleAnimation frameUp = new DoubleAnimation(15, 1200, new Duration(new TimeSpan(0, 0, 1)));
             Storyboard.SetTargetProperty(frameUp, new PropertyPath("(Canvas.Top)"));
             storyboard.Children.Add(frameUp);
+            storyboard.Completed += async (s, a) =>
+            {
+                web_browser.NavigateToString("");
+                await web_browser.SafeClearCache();
+            };
             if (Canvas.GetTop(frame_raschot) < 1000)
                 frame_raschot.BeginStoryboard(storyboard);
             else
                 frame.BeginStoryboard(storyboard);
+
         }
     }
 }

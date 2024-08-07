@@ -8,12 +8,17 @@
         body {
             display: flex;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         #videoList {
             width: 30%;
             padding: 10px;
             border-right: 1px solid #ccc;
+            overflow-y: auto;
+            height: 100vh;
         }
 
         #videoPlayer {
@@ -22,12 +27,38 @@
         }
 
         .videoItem {
+            display: flex;
+            align-items: center;
             cursor: pointer;
-            margin: 5px 0;
+            margin: 10px 0;
+            background-color: rgba(253, 243, 218, 0.8);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+            .videoItem:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .videoItem canvas {
+                max-height: 200px;
+                border-radius: 8px;
+                margin-right: 10px;
+            }
+
+        .videoTitle {
+            flex: 1;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
     </style>
 </head>
-<body  oncontextmenu="return false" ondragstart="return false">
+<body oncontextmenu="return false" ondragstart="return false">
     <div id="videoList"></div>
     <div id="videoPlayer">
         <video id="player" width="100%" controls autoplay loop></video>
@@ -41,14 +72,37 @@
         // List of video files (you can dynamically generate this list from your server)
         const videos = [];
 
-        videos.forEach(video => {
+        videos.forEach(videoFile => {
             const videoItem = document.createElement('div');
             videoItem.className = 'videoItem';
-            videoItem.textContent = video;
+
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            const videoElement = document.createElement('video');
+
+            videoElement.src = `${videoFolder}/${videoFile}`;
+            videoElement.addEventListener('loadedmetadata', () => {
+                videoElement.currentTime = 1; // Capture a frame at 1 second for the thumbnail
+            });
+
+            videoElement.addEventListener('seeked', () => {
+                canvas.width = videoElement.videoWidth;
+                canvas.height = videoElement.videoHeight;
+                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            });
+
+            const videoTitle = document.createElement('div');
+            videoTitle.className = 'videoTitle';
+            videoTitle.textContent = videoFile.split('.')[0]; // Set title as the file name without extension
+
+            videoItem.appendChild(canvas);
+            videoItem.appendChild(videoTitle);
+
             videoItem.onclick = () => {
-                player.src = `${videoFolder}/${video}`;
+                player.src = `${videoFolder}/${videoFile}`;
                 player.play();
             };
+
             videoList.appendChild(videoItem);
         });
 

@@ -5,7 +5,6 @@
         xmlns:local="clr-namespace:Train"
 		xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:chrome="clr-namespace:CefSharp.Wpf.Experimental;assembly=CefSharp.Wpf"
     x:Class="Train.MainWindow"
         mc:Ignorable="d" Width="1500" Height="1100"
         Title="MainWindow" Icon="Resources/logo.png"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStyle="None">
@@ -153,7 +152,7 @@
             <DockPanel x:Name="frame" Canvas.Top="1200" Margin="10"
                                Width="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" 
                                Height="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenHeightKey}}">
-                <Grid x:Name="grid" Width="{Binding Width, ElementName=frame}" Height="{Binding Height, ElementName=frame}" >
+                <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=frame}" Height="{Binding ActualHeight, ElementName=frame}" >
                     <Grid.Background>
                         <ImageBrush ImageSource="Resources/backgroundPanel.jpg"/>
                     </Grid.Background>
@@ -163,8 +162,7 @@
                     </Grid.RowDefinitions>
                     <Button x:Name="btn_exit_frame1" Click="btn_exit_frame1_Click" Style="{StaticResource btn_style_close}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                    <wv2:WebView2 IsManipulationEnabled="True"  ScrollViewer.CanContentScroll="True" Margin="10,0,10,10" x:Name="web_browser" Grid.Row="1" Grid.Column="0" 
-                            Width="{Binding Width, ElementName=grid}" 
+                    <wv2:WebView2 IsManipulationEnabled="True"  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="10,0,10,10" x:Name="web_browser" Grid.Row="1" Grid.Column="0" 
                             Height="{Binding Height, ElementName=grid_row2}" />
                 </Grid>
             </DockPanel>
