@@ -95,7 +95,7 @@
         </Style>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="Resources/Background_.jpg"/>
+        <ImageBrush ImageSource="Resources/Background_.jpg" Stretch="UniformToFill"/>
     </Window.Background>
     <Grid>
 		<Grid.ColumnDefinitions>
